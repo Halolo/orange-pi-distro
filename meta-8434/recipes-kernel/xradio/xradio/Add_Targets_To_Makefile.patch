@@ -1,0 +1,19 @@
+diff --git a/Makefile b/Makefile
+index fd15d31..078a2ad 100644
+--- a/Makefile
++++ b/Makefile
+@@ -50,3 +50,14 @@ ccflags-y += -DXRADIO_USE_LONG_KEEP_ALIVE_PERIOD
+ ldflags-y += --strip-debug
+ 
+ obj-$(CONFIG_XRADIO) += xradio_wlan.o
++
++SRC := $(shell pwd)
++
++all:
++	$(MAKE) -C $(KERNEL_SRC) M=$(SRC) modules
++
++modules_install:
++	$(MAKE) -C $(KERNEL_SRC) M=$(SRC) modules_install
++
++clean:
++	$(MAKE) -C $(KERNEL_SRC) M=$(SRC) clean
