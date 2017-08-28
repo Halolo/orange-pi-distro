@@ -1,4 +1,7 @@
+SUMMARY = "Small console image for Orange Pi Zero"
 IMAGE_LINGUAS = "en-us"
+
+inherit core-image
 
 CORE_OS = " \
   openssh openssh-keygen \

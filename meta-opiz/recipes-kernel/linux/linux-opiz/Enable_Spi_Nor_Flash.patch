@@ -1,0 +1,14 @@
+diff --git a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
+index ad0829e8f716..919eae1e6dfd 100644
+--- a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
++++ b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
+@@ -178,8 +178,7 @@
+ };
+ 
+ &spi0 {
+-	/* Disable SPI NOR by default: it optional on Orange Pi Zero boards */
+-	status = "disabled";
++	status = "okay";
+ 
+ 	flash@0 {
+ 		#address-cells = <1>;
