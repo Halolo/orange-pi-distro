@@ -10,9 +10,17 @@ Runs the 4.13-rc6 mainline kernel
 The SPI NOR flash memory support is enbled in the kernel and bootloader configuration, so it could be used to run u-boot and boot from USB for example
 
 ## Build the image
-Clone the external submodules and build the image:
+Clone the external submodules :
 
-`./setup.sh -b`
+`git submodule update --init`
+
+Source the file `source-me`:
+
+`. source-me`
+
+And build the image:
+
+`bitbake opiz-minimal`
 
 ## Flash on a sdcard
 The rootfs archive, bootloader and kernel images as well as an sdcard image with all needed partitions must have been created in:

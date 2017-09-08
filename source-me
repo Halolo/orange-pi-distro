@@ -1,0 +1,31 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd "$DIR"
+
+BUILD_DIR="$DIR/build"
+
+# Create build environment
+. "$DIR/poky/oe-init-build-env" "$BUILD_DIR" > /dev/null
+if [ "$?" -eq 0 ]; then
+  # Add machine and distro
+  echo '' >> "$BUILD_DIR/conf/local.conf"
+  sed -i '/# OPIZ/,$d' "$BUILD_DIR/conf/local.conf"
+  echo '# OPIZ
+MACHINE = "orange-pi-zero"
+DISTRO = "opiz"' >> "$BUILD_DIR/conf/local.conf"
+
+  # Add layers
+  echo '' >> "$BUILD_DIR/conf/bblayers.conf"
+  sed -i '/# OPIZ/,$d' "$BUILD_DIR/conf/bblayers.conf"
+  echo "# OPIZ
+BBLAYERS += \" \\
+  $DIR/meta-openembedded/meta-oe \\
+  $DIR/meta-sunxi \\
+  $DIR/meta-opiz \\
+  \"" >> "$BUILD_DIR/conf/bblayers.conf"
+
+  echo "Run 'bitbake <target>' (i.e. 'bitabke opiz-minimal')" 1>&2
+fi
+
+unset BUILD_DIR DIR
