@@ -11,7 +11,6 @@ CORE_OS = " \
 
 WIFI_SUPPORT = " \
   wpa-supplicant \
-  iw \
 "
 
 EXTRA_TOOLS_INSTALL = " \
