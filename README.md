@@ -31,6 +31,10 @@ Use dd to flash it on the sdcard (unmount all partitions before):
 
 `dd if=build/tmp-glibc/deploy/images/orange-pi-zero/opiz-minimal-orange-pi-zero.sunxi-sdimg of=/dev/??? bs=1M`
 
+To create a sdcard with root partition extended to all the device, use this script:
+
+`sudo ./flash-sdcard.sh -d /dev/???`
+
 ## Boot
 The ethernet network interface is configured as a dhcp client. A sshd is running. Use root for login, no password.
 
