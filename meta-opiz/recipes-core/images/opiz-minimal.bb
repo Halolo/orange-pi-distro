@@ -15,6 +15,7 @@ WIFI_SUPPORT = " \
 
 EXTRA_TOOLS_INSTALL = " \
   init-ifupdown \
+  mtd-utils \
 "
 
 IMAGE_INSTALL += " \

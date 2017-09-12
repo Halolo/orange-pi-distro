@@ -25,7 +25,7 @@ BBLAYERS += \" \\
   $DIR/meta-opiz \\
   \"" >> "$BUILD_DIR/conf/bblayers.conf"
 
-  echo "Run 'bitbake <target>' (i.e. 'bitabke opiz-minimal')" 1>&2
+  echo "Run 'bitbake <target>' (i.e. 'bitbake opiz-minimal')" 1>&2
 fi
 
 unset BUILD_DIR DIR
