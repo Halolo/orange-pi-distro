@@ -38,7 +38,7 @@ To create a sdcard with root partition extended to all the device, use this scri
 ## Boot
 The ethernet network interface is configured as a dhcp client. A sshd is running. Use root for login, no password.
 
-The wireless network interface uses wpa-supplicant for its configuration, edit `/etc/wpa-supplicant.conf` to setup the ssid and psk, and run `ifup wlan0` to start the interface.
+The wireless network interface uses wpa_supplicant for its configuration, edit `/etc/wpa_supplicant/wpa_supplicant-wlan0.conf` to setup the ssid and psk. Or run `wpa_passphrase <SSID> <PASSPHRASE> >> /etc/wpa_supplicant/wpa_supplicant-wlan0.conf`
 
 ## Flash u-boot on the SPI NOR flash
 If your board has been produced with integrated SPI NOR flash memory, you should see its device file:
