@@ -3,29 +3,36 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$DIR"
 
-BUILD_DIR="$DIR/build"
+MACHINE="$1"
 
-# Create build environment
-. "$DIR/poky/oe-init-build-env" "$BUILD_DIR" > /dev/null
-if [ "$?" -eq 0 ]; then
-  # Add machine and distro
-  echo '' >> "$BUILD_DIR/conf/local.conf"
-  sed -i '/# OPIZ/,$d' "$BUILD_DIR/conf/local.conf"
-  echo '# OPIZ
-MACHINE = "orange-pi-zero"
-DISTRO = "opiz"' >> "$BUILD_DIR/conf/local.conf"
+if [ -z "$MACHINE" ]; then
+  echo "Machine name is missing" 1>&2
+else
+  BUILD_DIR="$DIR/build"
 
-  # Add layers
-  echo '' >> "$BUILD_DIR/conf/bblayers.conf"
-  sed -i '/# OPIZ/,$d' "$BUILD_DIR/conf/bblayers.conf"
-  echo "# OPIZ
+  # Create build environment
+  . "$DIR/poky/oe-init-build-env" "$BUILD_DIR" > /dev/null
+  if [ "$?" -eq 0 ]; then
+    # Add machine and distro
+    echo '' >> "$BUILD_DIR/conf/local.conf"
+    sed -i '/# OPI/,$d' "$BUILD_DIR/conf/local.conf"
+    echo '# OPI
+MACHINE = "'"$MACHINE"'"
+DISTRO = "opi"' >> "$BUILD_DIR/conf/local.conf"
+
+    # Add layers
+    echo '' >> "$BUILD_DIR/conf/bblayers.conf"
+    sed -i '/# OPI/,$d' "$BUILD_DIR/conf/bblayers.conf"
+    echo "# OPI
 BBLAYERS += \" \\
   $DIR/meta-openembedded/meta-oe \\
   $DIR/meta-sunxi \\
-  $DIR/meta-opiz \\
+  $DIR/meta-opi \\
   \"" >> "$BUILD_DIR/conf/bblayers.conf"
 
-  echo "Run 'bitbake <target>' (i.e. 'bitbake opiz-minimal')" 1>&2
+    echo "Run 'bitbake <target>' (i.e. 'bitbake opiz-minimal')" 1>&2
+  fi
+  unset BUILD_DIR
 fi
 
-unset BUILD_DIR DIR
+unset DIR

@@ -2,11 +2,10 @@ SECTION = "kernel"
 DESCRIPTION = "Mainline Linux kernel"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=d7810fab7487fb0aad327b76f1be7cd7"
-COMPATIBLE_MACHINE = "(sun4i|sun5i|sun7i|sun8i)"
+COMPATIBLE_MACHINE = "(orange-pi-zero|orange-pi-pc)"
 
 inherit kernel
 
-require recipes-kernel/linux/linux-dtb.inc
 require recipes-kernel/linux/linux.inc
 
 # Pull in the devicetree files into the rootfs
@@ -18,13 +17,18 @@ DEFAULT_PREFERENCE = "-1"
 
 KERNEL_EXTRA_ARGS += "LOADADDR=${UBOOT_ENTRYPOINT}"
 	
-# 4.13.0-rc6
-PV = "4.13.0+git${SRCPV}"
-SRCREV_pn-${PN} = "383584ac020b8c34f88f31aa66062628c80fd46d"
+# 4.13
+PV = "4.13+git${SRCPV}"
+SRCREV = "f26cf4c28a4abe6460334a342f62ffa0d7059171"
 
-SRC_URI = "git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git;protocol=git;branch=master \
+SRC_URI = " \
+        git://github.com/megous/linux.git;protocol=git;branch=orange-pi-4.13 \
         file://defconfig \
+"
+
+SRC_URI_orange-pi-zero += " \
         file://Add_WiFi_To_Dts.patch \
         file://Enable_Spi_Nor_Flash.patch \
-        "
+"
+
 S = "${WORKDIR}/git"
