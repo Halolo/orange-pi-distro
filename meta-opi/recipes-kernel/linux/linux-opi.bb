@@ -6,6 +6,7 @@ COMPATIBLE_MACHINE = "(orange-pi-zero|orange-pi-pc)"
 
 inherit kernel
 
+require recipes-kernel/linux/linux-dtb.inc
 require recipes-kernel/linux/linux.inc
 
 # Pull in the devicetree files into the rootfs
@@ -16,13 +17,13 @@ RDEPENDS_kernel-base += "kernel-devicetree"
 DEFAULT_PREFERENCE = "-1" 
 
 KERNEL_EXTRA_ARGS += "LOADADDR=${UBOOT_ENTRYPOINT}"
-	
-# 4.13
-PV = "4.13+git${SRCPV}"
-SRCREV = "f26cf4c28a4abe6460334a342f62ffa0d7059171"
+
+# 4.13.0-rc6
+PV = "4.13.0+git${SRCPV}"
+SRCREV = "383584ac020b8c34f88f31aa66062628c80fd46d"
 
 SRC_URI = " \
-        git://github.com/megous/linux.git;protocol=git;branch=orange-pi-4.13 \
+        git://github.com/torvalds/linux.git;protocol=git;branch=master \
         file://defconfig \
 "
 
