@@ -13,9 +13,9 @@ SRCREV = "7e8cecd6997412312261aaf50bd83cd63a240d7f"
 
 SRC_URI = " \
   git://github.com/yuq/linux-lima.git;protocol=https;branch=lima-4.13 \
-  file://Add-Target-To-Makefile.patch \
+  file://Compile-Lima-As-A-Module.patch \
 "
 
 S = "${WORKDIR}/git/drivers/gpu/drm/lima"
 
-FILES_${PN} = "/lib/*"
+KERNEL_MODULE_AUTOLOAD += "lima"
