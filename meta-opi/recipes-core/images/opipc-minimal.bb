@@ -6,7 +6,6 @@ inherit core-image
 CORE_OS = " \
   openssh openssh-keygen \
   kernel-modules \
-  lima \
 "
 
 EXTRA_TOOLS_INSTALL = " \
