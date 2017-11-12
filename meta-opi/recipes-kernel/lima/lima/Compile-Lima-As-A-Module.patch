@@ -1,7 +1,7 @@
-diff --git a/drivers/gpu/drm/lima/Makefile b/drivers/gpu/drm/lima/Makefile
+diff --git a/Makefile b/Makefile
 index 1ea42ee5f417..9970569d0bc8 100644
---- a/drivers/gpu/drm/lima/Makefile
-+++ b/drivers/gpu/drm/lima/Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -1,3 +1,5 @@
 +CONFIG_DRM_LIMA := m
 +
@@ -23,10 +23,10 @@ index 1ea42ee5f417..9970569d0bc8 100644
 +
 +clean:
 +	$(MAKE) -C $(KERNEL_SRC) M=$(SRC) clean
-diff --git a/drivers/gpu/drm/lima/lima.h b/drivers/gpu/drm/lima/lima.h
+diff --git a/lima.h b/lima.h
 index c79877fdb01c..3e97de88ad0b 100644
---- a/drivers/gpu/drm/lima/lima.h
-+++ b/drivers/gpu/drm/lima/lima.h
+--- a/lima.h
++++ b/lima.h
 @@ -22,7 +22,7 @@
  #ifndef __LIMA_H__
  
