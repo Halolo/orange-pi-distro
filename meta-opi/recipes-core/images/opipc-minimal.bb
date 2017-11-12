@@ -6,6 +6,7 @@ inherit core-image
 CORE_OS = " \
   openssh openssh-keygen \
   kernel-modules \
+  mali \
 "
 
 EXTRA_TOOLS_INSTALL = " \

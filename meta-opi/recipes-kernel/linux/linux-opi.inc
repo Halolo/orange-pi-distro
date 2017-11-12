@@ -19,12 +19,12 @@ DEFAULT_PREFERENCE = "-1"
 
 KERNEL_EXTRA_ARGS += "LOADADDR=${UBOOT_ENTRYPOINT}"
 
-# 4.13
-PV = "4.13+git${SRCPV}"
-SRCREV = "7e8cecd6997412312261aaf50bd83cd63a240d7f"
+# 4.14
+PV = "4.14+git${SRCPV}"
+SRCREV = "a215a0612821c9db0cc688efae22274735346e3d"
 
 SRC_URI = " \
-        git://github.com/yuq/linux-lima.git;protocol=git;branch=lima-4.13 \
+        git://github.com/megous/linux.git;protocol=git;branch=orange-pi-4.14 \
         file://defconfig \
 "
 

@@ -1,3 +1,3 @@
 DEPENDS_remove = "sunxi-mali"
 
-DEPENDS += "mesa-lima"
+DEPENDS += "mali-blobs"
