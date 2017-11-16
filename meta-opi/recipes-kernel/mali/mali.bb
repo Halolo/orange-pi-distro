@@ -16,14 +16,12 @@ SRC_URI = "git://github.com/mripard/sunxi-mali.git;protocol=git"
 S = "${WORKDIR}/git/r6p2/src/devicedrv/mali"
 
 do_patch() {
-  pushd ${WORKDIR}/git/r6p2
+  cd ${WORKDIR}/git/r6p2
 
   for patch in ${WORKDIR}/git/patches/*.patch;
   do
     patch -p1 < $patch
   done
-
-  popd
 }
 
 MODULES_INSTALL_TARGET = "install"
