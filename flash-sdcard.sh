@@ -12,14 +12,12 @@ fi
 SCRIPT_DIR="$(dirname "$0")"
 cd "$SCRIPT_DIR"
 
-IMG_PATH="$SCRIPT_DIR/build/tmp-glibc/deploy/images/orange-pi-zero"
-
 # Usage if bad arguments were passed
 usage () {
    echo    "" 1>&2
    echo    "Options:" 1>&2
    echo    "    -d device" 1>&2
-   echo    "    -I image-path (default: build path)" 1>&2
+   echo    "    -m machine (orange-pi-pc or orange-pi-zero)" 1>&2
    echo    "" 1>&2
    echo    "Others:" 1>&2
    echo    "    -h = This help menu" 1>&2
@@ -27,13 +25,13 @@ usage () {
 }
 
 # Option parsing
-while getopts ":hd:I:" opt; do
+while getopts ":hd:m:" opt; do
   case "$opt" in
     d)
       DEVICE="$OPTARG"
       ;;
-    I)
-      IMG_PATH="$(dirname "$OPTARG")"
+    m)
+      MACHINE="$OPTARG"
       ;;
     h)
       usage
@@ -45,11 +43,18 @@ while getopts ":hd:I:" opt; do
   esac
 done
 
+IMG_PATH="$SCRIPT_DIR/build/tmp-glibc/deploy/images/$MACHINE"
+
 BOOTLOADER_FILE="$IMG_PATH/u-boot-sunxi-with-spl.bin"
 BOOTSCR_FILE="$IMG_PATH/boot.scr"
 UIMAGE_FILE="$IMG_PATH/uImage"
-DTB_FILE="$IMG_PATH/uImage-sun8i-h2-plus-orangepi-zero.dtb"
-RFS_FILE="$IMG_PATH/opiz-minimal-orange-pi-zero.tar.gz"
+RFS_FILE="$IMG_PATH/opiz-minimal-$MACHINE.tar.gz"
+
+if [ "$MACHINE" = "orange-pi-zero" ]; then
+  DTB_FILE="$IMG_PATH/uImage-sun8i-h2-plus-orangepi-zero.dtb"
+else
+  DTB_FILE="$IMG_PATH/uImage-sun8i-h3-orangepi-pc.dtb"
+fi
 
 BOOT_PART="$SCRIPT_DIR/p1"
 RFS_PART="$SCRIPT_DIR/p2"
@@ -133,7 +138,12 @@ echo "Installing boot partition..." 1>&2
 rm -rf "${BOOT_PART:?}/"*
 cp "$BOOTSCR_FILE" "$BOOT_PART"
 cp "$UIMAGE_FILE" "$BOOT_PART"
-cp "$DTB_FILE" "$BOOT_PART/sun8i-h2-plus-orangepi-zero.dtb"
+
+if [ "$MACHINE" = "orange-pi-zero" ]; then
+  cp "$DTB_FILE" "$BOOT_PART/sun8i-h2-plus-orangepi-zero.dtb"
+else
+  cp "$DTB_FILE" "$BOOT_PART/sun8i-h3-orangepi-pc.dtb"
+fi
 
 echo "Extracting rfs (could take a while)..." 1>&2
 rm -rf "${RFS_PART:?}/"*
