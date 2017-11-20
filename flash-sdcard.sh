@@ -48,12 +48,13 @@ IMG_PATH="$SCRIPT_DIR/build/tmp-glibc/deploy/images/$MACHINE"
 BOOTLOADER_FILE="$IMG_PATH/u-boot-sunxi-with-spl.bin"
 BOOTSCR_FILE="$IMG_PATH/boot.scr"
 UIMAGE_FILE="$IMG_PATH/uImage"
-RFS_FILE="$IMG_PATH/opiz-minimal-$MACHINE.tar.gz"
 
 if [ "$MACHINE" = "orange-pi-zero" ]; then
   DTB_FILE="$IMG_PATH/uImage-sun8i-h2-plus-orangepi-zero.dtb"
+  RFS_FILE="$IMG_PATH/opiz-minimal-$MACHINE.tar.gz"
 else
   DTB_FILE="$IMG_PATH/uImage-sun8i-h3-orangepi-pc.dtb"
+  RFS_FILE="$IMG_PATH/opipc-minimal-$MACHINE.tar.gz"
 fi
 
 BOOT_PART="$SCRIPT_DIR/p1"
