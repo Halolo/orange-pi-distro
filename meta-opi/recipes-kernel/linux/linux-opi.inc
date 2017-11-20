@@ -7,7 +7,6 @@ PN = "linux-opi"
 
 inherit kernel
 
-require recipes-kernel/linux/linux-dtb.inc
 require recipes-kernel/linux/linux.inc
 
 # Pull in the devicetree files into the rootfs

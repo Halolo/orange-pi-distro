@@ -14,14 +14,13 @@ cd "$SCRIPT_DIR"
 
 # Usage if bad arguments were passed
 usage () {
-   echo    "" 1>&2
-   echo    "Options:" 1>&2
-   echo    "    -d device" 1>&2
-   echo    "    -m machine (orange-pi-pc or orange-pi-zero)" 1>&2
-   echo    "" 1>&2
-   echo    "Others:" 1>&2
-   echo    "    -h = This help menu" 1>&2
-   exit 1
+   echo    ""
+   echo    "Options:"
+   echo    "    -d device"
+   echo    "    -m machine (orange-pi-pc or orange-pi-zero)"
+   echo    ""
+   echo    "Others:"
+   echo    "    -h = This help menu"
 }
 
 # Option parsing
@@ -35,6 +34,7 @@ while getopts ":hd:m:" opt; do
       ;;
     h)
       usage
+      exit 0
       ;;
     *)
       usage
@@ -51,11 +51,13 @@ UIMAGE_FILE="$IMG_PATH/uImage"
 
 if [ "$MACHINE" = "orange-pi-zero" ]; then
   DTB_FILE="$IMG_PATH/uImage-sun8i-h2-plus-orangepi-zero.dtb"
-  RFS_FILE="$IMG_PATH/opiz-minimal-$MACHINE.tar.gz"
+  IMAGE="opiz-minimal"
 else
   DTB_FILE="$IMG_PATH/uImage-sun8i-h3-orangepi-pc.dtb"
-  RFS_FILE="$IMG_PATH/opipc-minimal-$MACHINE.tar.gz"
+  IMAGE="opipc-minimal"
 fi
+
+RFS_FILE="$IMG_PATH/$IMAGE-$MACHINE.tar.gz"
 
 BOOT_PART="$SCRIPT_DIR/p1"
 RFS_PART="$SCRIPT_DIR/p2"
@@ -73,30 +75,28 @@ if [ ! -e "$BOOTSCR_FILE" ] || [ ! -e "$UIMAGE_FILE" ] || [ ! -e "$DTB_FILE" ] |
 fi
 
 cleanup() {
-  echo "Cleaning up..." 1>&2
+  echo "Cleaning up..."
   cd "$SCRIPT_DIR"
   rm -rf "$BOOT_PART"
   rm -rf "$RFS_PART"
 }
 
 exit_script() {
+  echo "Unmounting partitions"
+  timeout 5m umount "$DEVICE"? &> /dev/null
   cleanup
   if [ "$1" -ne 0 ]; then
-    echo "Unmounting partitions" 1>&2
-    cd "$SCRIPT_DIR"
-    timeout 5m umount "$DEVICE"?* &> /dev/null
     echo "Fail :(" 1>&2
   else
-    echo "Success :)" 1>&2
+    echo "Success :)"
   fi
 }
 
 trap 'exit_script $?' TERM EXIT INT
 
-echo "Creating partition table..." 1>&2
-timeout 1m umount "$DEVICE"?* || echo "Continue..." 1>&2
-sleep 5
-sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk -w always "${DEVICE}" > /dev/null
+echo "Creating partition table..."
+timeout 1m umount "$DEVICE"? || echo "Continue..."
+sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk -W always -w always "${DEVICE}" > /dev/null
   o # New partition table
   n # new partition
     # default
@@ -111,31 +111,27 @@ sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk -w always "${DEVICE}" > /d
     # default
     # default
     # default
-  p # print the in-memory partition table
   w # write the partition table
-  q # and we're done
 EOF
-sleep 5
-timeout 1m umount "$DEVICE"?* || echo "Continue..." 1>&2
-echo -e "Done.\n" 1>&2
+echo -e "Done.\n"
 
-echo "Creating partitions..." 1>&2
-echo "BOOT..." 1>&2
+echo "Creating partitions..."
+echo "BOOT..."
 timeout 5m mkfs.vfat -F 16 -n "BOOT" "${DEVICE}1" > /dev/null
-echo "RFS..." 1>&2
+echo "RFS..."
 timeout 5m mkfs.ext4 -L "ROOT" "${DEVICE}2" > /dev/null
-echo -e "Done.\n" 1>&2
+echo -e "Done.\n"
 
-echo "Mounting partitions..." 1>&2
+echo "Mounting partitions..."
 rm -rf "$BOOT_PART"
 rm -rf "$RFS_PART"
 mkdir "$BOOT_PART"
 mkdir "$RFS_PART"
 timeout 1m mount "${DEVICE}1" "$BOOT_PART"
 timeout 1m mount "${DEVICE}2" "$RFS_PART"
-echo -e "Done.\n" 1>&2
+echo -e "Done.\n"
 
-echo "Installing boot partition..." 1>&2
+echo "Installing boot partition..."
 rm -rf "${BOOT_PART:?}/"*
 cp "$BOOTSCR_FILE" "$BOOT_PART"
 cp "$UIMAGE_FILE" "$BOOT_PART"
@@ -146,15 +142,12 @@ else
   cp "$DTB_FILE" "$BOOT_PART/sun8i-h3-orangepi-pc.dtb"
 fi
 
-echo "Extracting rfs (could take a while)..." 1>&2
+echo "Extracting rfs (could take a while)..."
 rm -rf "${RFS_PART:?}/"*
 timeout 5m tar -xf "$RFS_FILE" -C "$RFS_PART"
 timeout 10m sync
   
-echo "Unmounting partitions" 1>&2
-timeout 5m umount "$DEVICE"?* &> /dev/null
-
 echo "Writing bootloader..."
 timeout 5m dd if="$BOOTLOADER_FILE" of="$DEVICE" bs=1024 seek=8 conv=notrunc
 
-echo -e "Done.\n" 1>&2
+echo -e "Done.\n"
