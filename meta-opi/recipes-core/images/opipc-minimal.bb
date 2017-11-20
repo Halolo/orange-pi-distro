@@ -7,6 +7,7 @@ CORE_OS = " \
   openssh openssh-keygen \
   kernel-modules \
   mali \
+  mali-blobs \
 "
 
 EXTRA_TOOLS_INSTALL = " \
