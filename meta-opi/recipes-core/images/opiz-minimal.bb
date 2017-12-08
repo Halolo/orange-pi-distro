@@ -4,6 +4,7 @@ IMAGE_LINGUAS = "en-us"
 inherit core-image
 
 CORE_OS = " \
+  u-boot \
   openssh openssh-keygen \
   kernel-modules \
   xradio \

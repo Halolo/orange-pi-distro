@@ -4,14 +4,15 @@ IMAGE_LINGUAS = "en-us"
 inherit core-image
 
 CORE_OS = " \
+  u-boot \
   openssh openssh-keygen \
   kernel-modules \
   mali \
 "
 
 EXTRA_TOOLS_INSTALL = " \
+  htop \
   mtd-utils \
-  ioquake3 \
 "
 
 IMAGE_INSTALL += " \

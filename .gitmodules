@@ -4,6 +4,3 @@
 [submodule "meta-openembedded"]
 	path = meta-openembedded
 	url = git://git.openembedded.org/meta-openembedded
-[submodule "meta-sunxi"]
-	path = meta-sunxi
-	url = https://github.com/linux-sunxi/meta-sunxi.git

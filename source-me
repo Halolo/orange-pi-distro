@@ -26,7 +26,6 @@ DISTRO = "opi"' >> "$BUILD_DIR/conf/local.conf"
     echo "# OPI
 BBLAYERS += \" \\
   $DIR/meta-openembedded/meta-oe \\
-  $DIR/meta-sunxi \\
   $DIR/meta-opi \\
   \"" >> "$BUILD_DIR/conf/bblayers.conf"
 

@@ -12,3 +12,5 @@ do_install_append() {
 
   ln -s ../run/systemd/resolve/resolv.conf ${D}${sysconfdir}/resolv.conf
 }
+
+FILES_${PN} += "${sysconfdir}/resolv.conf"
