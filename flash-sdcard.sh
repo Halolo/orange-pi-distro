@@ -18,19 +18,23 @@ usage () {
    echo    "Options:"
    echo    "    -d device"
    echo    "    -m machine (orange-pi-pc or orange-pi-zero)"
+   echo    "    -i image name"
    echo    ""
    echo    "Others:"
    echo    "    -h = This help menu"
 }
 
 # Option parsing
-while getopts ":hd:m:" opt; do
+while getopts ":hd:m:i:" opt; do
   case "$opt" in
     d)
       DEVICE="$OPTARG"
       ;;
     m)
       MACHINE="$OPTARG"
+      ;;
+    i)
+      IMAGE="$OPTARG"
       ;;
     h)
       usage
@@ -51,10 +55,8 @@ UIMAGE_FILE="$IMG_PATH/uImage"
 
 if [ "$MACHINE" = "orange-pi-zero" ]; then
   DTB_FILE="$IMG_PATH/uImage-sun8i-h2-plus-orangepi-zero.dtb"
-  IMAGE="opiz-minimal"
 else
   DTB_FILE="$IMG_PATH/uImage-sun8i-h3-orangepi-pc.dtb"
-  IMAGE="opipc-minimal"
 fi
 
 RFS_FILE="$IMG_PATH/$IMAGE-$MACHINE.tar.gz"
