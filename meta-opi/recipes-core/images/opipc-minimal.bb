@@ -1,24 +1,4 @@
-SUMMARY = "Small console image for Orange Pi Zero"
+require opipc-image.inc
+
+SUMMARY = "Small console image for Orange Pi Pc"
 IMAGE_LINGUAS = "en-us"
-
-inherit core-image
-
-CORE_OS = " \
-  openssh openssh-keygen \
-  kernel-modules \
-  mali \
-  mali-blobs \
-"
-
-EXTRA_TOOLS_INSTALL = " \
-  mtd-utils \
-  xclock \
-"
-
-IMAGE_INSTALL += " \
-  ${CORE_OS} \
-  ${EXTRA_TOOLS_INSTALL} \
-  ${XSERVER} \
-"
-
-IMAGE_FEATURES += "package-management"

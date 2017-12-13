@@ -1,7 +1,9 @@
 SUMMARY = "Mali-400 userspace blobs"
 LICENSE = "CLOSED"
 
-PROVIDES = "virtual/libegl virtual/libgles1 virtual/libgles2 virtual/egl"
+PROVIDES = "virtual/egl virtual/libegl virtual/libgles1 virtual/libgles2"
+
+INSANE_SKIP_${PN} = "dev-so"
 
 SRC_URI = " \
   git://github.com/free-electrons/mali-blobs.git;branch=master \
@@ -16,7 +18,7 @@ S= "${WORKDIR}/git"
 
 do_install() {
   install -d ${D}${libdir}
-  install -m 0644 ${S}/r6p2/fbdev/lib/lib_fb_dev/lib* ${D}${libdir}/
+  install -m 0644 ${S}/r6p2/fbdev/lib/lib_fb_dev/lib* ${D}${libdir}
 
   install -d ${D}${libdir}/pkgconfig
   install -m 0644 ${WORKDIR}/*.pc ${D}${libdir}/pkgconfig/
