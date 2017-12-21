@@ -99,29 +99,32 @@ trap 'exit_script $?' TERM EXIT INT
 echo "Creating partition table..."
 timeout 1m umount "$DEVICE"? || echo "Continue..."
 sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk -W always -w always "${DEVICE}" > /dev/null
-  o # New partition table
+  o # New MSDOS partition table
   n # new partition
     # default
     # default
-  2048 # 2048
-  +20M # 20M for boot
+  4096
+  45055
   t # partition type
   c # win 95 fat32
   a # bootable
   n # new partition
     # default
     # default
+  45056
     # default
-    # default
+  t # partition type
+  2 # partition 2
+  83 # Linux
   w # write the partition table
 EOF
 echo -e "Done.\n"
 
 echo "Creating partitions..."
 echo "BOOT..."
-timeout 5m mkfs.vfat -F 16 -n "BOOT" "${DEVICE}1" > /dev/null
+timeout 5m mkfs.vfat -n "$MACHINE" -S 512 "${DEVICE}1" > /dev/null
 echo "RFS..."
-timeout 5m mkfs.ext4 -L "ROOT" "${DEVICE}2" > /dev/null
+timeout 5m mkfs.ext4 -L "rfs" "${DEVICE}2" > /dev/null
 echo -e "Done.\n"
 
 echo "Mounting partitions..."
