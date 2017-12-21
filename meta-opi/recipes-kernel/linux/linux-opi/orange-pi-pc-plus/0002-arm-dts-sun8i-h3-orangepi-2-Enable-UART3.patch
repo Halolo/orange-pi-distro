@@ -1,0 +1,26 @@
+From e70889bcb58a735ddde3a49b3c5466da38428871 Mon Sep 17 00:00:00 2001
+From: Marek Belisko <marek.belisko@open-nandra.com>
+Date: Tue, 19 Dec 2017 21:25:48 +0100
+Subject: [PATCH] arm: dts: sun8i-h3-orangepi-2: Enable UART3
+
+Signed-off-by: Marek Belisko <marek.belisko@open-nandra.com>
+---
+ arch/arm/boot/dts/sun8i-h3-orangepi-2.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm/boot/dts/sun8i-h3-orangepi-2.dts b/arch/arm/boot/dts/sun8i-h3-orangepi-2.dts
+index ef98e28..14942c7 100644
+--- a/arch/arm/boot/dts/sun8i-h3-orangepi-2.dts
++++ b/arch/arm/boot/dts/sun8i-h3-orangepi-2.dts
+@@ -250,7 +250,7 @@
+ &uart3 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&uart3_pins>;
+-	status = "disabled";
++	status = "okay";
+ };
+ 
+ &usbphy {
+-- 
+2.7.4
+

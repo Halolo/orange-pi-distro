@@ -1,0 +1,27 @@
+From d8c27495926a3f018cff73b29f89930b8b80b57e Mon Sep 17 00:00:00 2001
+From: Marek Belisko <marek.belisko@open-nandra.com>
+Date: Tue, 19 Dec 2017 22:51:36 +0100
+Subject: [PATCH] Add module install
+
+Signed-off-by: Marek Belisko <marek.belisko@open-nandra.com>
+---
+ Makefile | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/Makefile b/Makefile
+index 9553e6e..8fc04f2 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1723,6 +1723,9 @@ install:
+ 	install -p -m 644 $(MODULE_NAME).ko  $(MODDESTDIR)
+ 	/sbin/depmod -a ${KVER}
+ 
++modules_install:
++	$(MAKE) -C $(KSRC) M=$(shell pwd) modules_install
++
+ uninstall:
+ 	rm -f $(MODDESTDIR)/$(MODULE_NAME).ko
+ 	/sbin/depmod -a ${KVER}
+-- 
+2.7.4
+

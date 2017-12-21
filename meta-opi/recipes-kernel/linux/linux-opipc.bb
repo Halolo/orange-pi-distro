@@ -1,6 +1,6 @@
 require linux-opi.inc
 
-COMPATIBLE_MACHINE = "(orange-pi-pc)"
+COMPATIBLE_MACHINE = "orange-pi-pc|orange-pi-pc-plus"
 
 # 4.14
 PV = "4.14+git${SRCPV}"
