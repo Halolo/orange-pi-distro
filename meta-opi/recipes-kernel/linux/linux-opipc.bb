@@ -10,5 +10,8 @@ SRC_URI = " \
   git://github.com/megous/linux.git;protocol=git;branch=orange-pi-4.14 \
   file://defconfig \
   file://Add-Mali-Node.patch \
+"
+
+SRC_URI_append-orange-pi-pc = " \
   file://Enable-Dvfs.patch \
 "
