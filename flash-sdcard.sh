@@ -100,7 +100,7 @@ trap 'exit_script $?' TERM EXIT INT
 
 echo "Creating partition table..."
 timeout 1m umount "$DEVICE"? || echo "Continue..."
-sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk -W always -w always "${DEVICE}" > /dev/null
+sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk "${DEVICE}" > /dev/null
   o # New MSDOS partition table
   n # new partition
     # default
