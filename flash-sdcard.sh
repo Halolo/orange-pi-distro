@@ -17,7 +17,7 @@ usage () {
    echo    ""
    echo    "Options:"
    echo    "    -d device"
-   echo    "    -m machine (orange-pi-pc or orange-pi-zero)"
+   echo    "    -m machine (orange-pi-pc, orange-pi-pc-plus or orange-pi-zero)"
    echo    "    -i image name"
    echo    ""
    echo    "Others:"
@@ -55,8 +55,10 @@ UIMAGE_FILE="$IMG_PATH/uImage"
 
 if [ "$MACHINE" = "orange-pi-zero" ]; then
   DTB_FILE="$IMG_PATH/uImage-sun8i-h2-plus-orangepi-zero.dtb"
-else
+elif [ "$MACHINE" = "orange-pi-pc" ]; then
   DTB_FILE="$IMG_PATH/uImage-sun8i-h3-orangepi-pc.dtb"
+elif [ "$MACHINE" = "orange-pi-pc-plus" ]; then
+  DTB_FILE="$IMG_PATH/uImage-sun8i-h3-orangepi-pc-plus.dtb"
 fi
 
 RFS_FILE="$IMG_PATH/$IMAGE-$MACHINE.tar.gz"
@@ -143,8 +145,10 @@ cp "$UIMAGE_FILE" "$BOOT_PART"
 
 if [ "$MACHINE" = "orange-pi-zero" ]; then
   cp "$DTB_FILE" "$BOOT_PART/sun8i-h2-plus-orangepi-zero.dtb"
-else
+elif [ "$MACHINE" = "orange-pi-pc" ]; then
   cp "$DTB_FILE" "$BOOT_PART/sun8i-h3-orangepi-pc.dtb"
+elif [ "$MACHINE" = "orange-pi-pc-plus" ]; then
+  cp "$DTB_FILE" "$BOOT_PART/sun8i-h3-orangepi-pc-plus.dtb"
 fi
 
 echo "Extracting rfs (could take a while)..."
