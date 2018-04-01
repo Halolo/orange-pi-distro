@@ -4,6 +4,8 @@ LIC_FILES_CHKSUM = "file://include/autoconf.h;startline=1;endline=18;md5=dbad0ab
 
 inherit module
 
+PV = "git${SRCPV}"
+
 SRC_URI = "git://github.com/jwrdegoede/rtl8189ES_linux.git;branch=rtl8189fs \
 	file://0001-Add-module-install.patch \   
 	"

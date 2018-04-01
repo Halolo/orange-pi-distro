@@ -2,8 +2,7 @@ DESCRIPTION = "Xradio xr819 WiFi firmware"
 LICENSE = "CC0-1.0"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/${LICENSE};md5=0ceb3372c9595f0a8067e55da801e4a1"
 
-PV = "1.0"
-PR = "r0"
+PV = "git${SRCPV}"
 
 SRCREV = "8b4a4ed16f7f9d12e59ff2f9ceba3cc335374dbe"
 

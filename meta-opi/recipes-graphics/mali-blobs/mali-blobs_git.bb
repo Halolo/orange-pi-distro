@@ -12,6 +12,8 @@ SRC_URI = " \
   file://glesv2.pc \
 "
 
+PV = "git${SRCPV}"
+
 SRCREV = "cb3e8ece9b2c3a70cbeb3204cd6f30eceaa32023"
 
 S= "${WORKDIR}/git"

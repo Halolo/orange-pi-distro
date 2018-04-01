@@ -2,9 +2,9 @@ DESCRIPTION = "OpenGL ES quake3"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING.txt;md5=87113aa2b484c59a17085b5c3f900ebf"
 
+PV = "git${SRCREV}"
+
 SRCREV = "3e1599ac4bed2adb125600fd99b44f4167a75cd9"
-PR_append = "+gitr${SRCREV}"
-PV = "0.0"
 
 DEPENDS = "libsdl2 virtual/libgles2"
 
