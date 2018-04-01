@@ -13,6 +13,7 @@ QT5_PKGS = " \
   qtmultimedia \
   qt3d \
   qt5-opengles2-test \
+  eglinfo-fb \
   cinematicexperience \ 
 "
 
