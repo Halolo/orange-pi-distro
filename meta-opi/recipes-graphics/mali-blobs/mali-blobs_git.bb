@@ -3,12 +3,10 @@ LICENSE = "CLOSED"
 
 PROVIDES = "virtual/egl virtual/libegl virtual/libgles1 virtual/libgles2"
 
-INSANE_SKIP_${PN} = "dev-so"
-
 SRC_URI = " \
   git://github.com/free-electrons/mali-blobs.git;branch=master \
   file://egl.pc \
-  file://gles_cm.pc \
+  file://glesv1_cm.pc \
   file://glesv2.pc \
 "
 
