@@ -30,8 +30,6 @@ SRCREV = "8537ddd769f460d7fb7a62a3dcc9669049702e51"
 
 PV = "v2017.03+git${SRCPV}"
 
-PE = "2"
-
 S = "${WORKDIR}/git"
 
 SPL_BINARY="u-boot-sunxi-with-spl.bin"

@@ -1,7 +1,7 @@
 inherit core-image
 
 CORE_OS = " \
-  u-boot \
+  u-boot-opi \
   openssh openssh-keygen \
   kernel-modules \
   mali \

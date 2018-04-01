@@ -15,8 +15,8 @@ XSERVER = "xserver-xorg \
            xf86-input-keyboard"
 
 PREFERRED_PROVIDER_virtual/kernel ?= "linux-opi"
-PREFERRED_PROVIDER_u-boot ?= "u-boot"
-PREFERRED_PROVIDER_virtual/bootloader ?= "u-boot"
+PREFERRED_PROVIDER_u-boot ?= "u-boot-opi"
+PREFERRED_PROVIDER_virtual/bootloader ?= "u-boot-opi"
 
 KERNEL_IMAGETYPE ?= "uImage"
 
