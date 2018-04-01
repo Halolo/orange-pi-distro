@@ -17,8 +17,8 @@ usage () {
    echo    ""
    echo    "Options:"
    echo    "    -d device"
-   echo    "    -m machine (orange-pi-pc, orange-pi-pc-plus or orange-pi-zero)"
-   echo    "    -i image name"
+   echo    "    -m machine [$(find $SCRIPT_DIR/meta-opi/conf/machine/ -name *.conf -type f -printf "%f\n" | cut -f 1 -d '.' | xargs echo)]"
+   echo    "    -i image name [$(find $SCRIPT_DIR/meta-opi/recipes-core/images/ -name *.bb -type f -printf "%f\n" | cut -f 1 -d '.' | xargs echo)]"
    echo    ""
    echo    "Others:"
    echo    "    -h = This help menu"
@@ -74,6 +74,21 @@ fi
 
 if [ ! -e "$BOOTSCR_FILE" ] || [ ! -e "$UIMAGE_FILE" ] || [ ! -e "$DTB_FILE" ] || [ ! -e "$RFS_FILE" ] || [ ! -e "$BOOTLOADER_FILE" ]; then
   echo "Invalid image path" 1>&2
+  if [ ! -e "$BOOTSCR_FILE" ]; then
+    echo "Can't find '$BOOTSCR_FILE'" 1>&2
+  fi
+  if [ ! -e "$UIMAGE_FILE" ]; then
+  echo "Can't find '$UIMAGE_FILE'" 1>&2
+  fi
+  if [ ! -e "$DTB_FILE" ]; then
+  echo "Can't find '$DTB_FILE'" 1>&2
+  fi
+  if [ ! -e "$RFS_FILE" ]; then
+  echo "Can't find '$RFS_FILE'" 1>&2
+  fi
+  if [ ! -e "$BOOTLOADER_FILE" ]; then
+  echo "Can't find '$BOOTLOADER_FILE'" 1>&2
+  fi
   usage
   exit 1
 fi

@@ -7,6 +7,8 @@ MACHINE="$1"
 
 if [ -z "$MACHINE" ]; then
   echo "Machine name is missing" 1>&2
+  echo "Machines:" 1>&2
+  echo "$(find $DIR/meta-opi/conf/machine/ -name *.conf  -type f -printf "%f\n" | cut -f 1 -d '.')" 1>&2
 else
   BUILD_DIR="$DIR/build"
 
@@ -30,7 +32,9 @@ BBLAYERS += \" \\
   $DIR/meta-opi \\
   \"" >> "$BUILD_DIR/conf/bblayers.conf"
 
-    echo "Run 'bitbake <target>' (i.e. 'bitbake opiz-minimal')" 1>&2
+    echo "Run 'bitbake <target>'"
+    echo "Images:"
+    echo "$(find $DIR/meta-opi/recipes-core/images/ -name *.bb  -type f -printf "%f\n" | cut -f 1 -d '.')"
   fi
   unset BUILD_DIR
 fi
