@@ -10,19 +10,13 @@ CORE_OS = " \
   xradio \
 "
 
-WIFI_SUPPORT = " \
-  wpa-supplicant \
-"
-
 EXTRA_TOOLS_INSTALL = " \
-  init-ifupdown \
   mtd-utils \
 "
 
 IMAGE_INSTALL += " \
   ${CORE_OS} \
   ${EXTRA_TOOLS_INSTALL} \
-  ${WIFI_SUPPORT} \
 "
 
 IMAGE_FEATURES += "package-management"
