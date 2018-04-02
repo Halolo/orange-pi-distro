@@ -18,22 +18,23 @@ Runs a [4.16 kernel](https://github.com/megous/linux), with HDMI support and [Ma
 
 It's the r6p2 fb driver and the matching [r6p2 fb user space lib](https://github.com/free-electrons/mali-blobs), to be used with QT using the EGLFS platform (eglfs_mali)
 
-<aside class="warning">
-WIP
-</aside>
+:warning: WIP
 
 The driver is loaded correctly but eglinfo-fb, the qt egl test app and the [sunxi-mali test app](https://github.com/linux-sunxi/sunxi-mali/tree/master/test) fails the same way: segfault in libMali.so
 
-`mali: loading out-of-tree module taints kernel.
+```
+mali: loading out-of-tree module taints kernel.
 Allwinner sunXi mali glue initialized
 Mali: 
 Found Mali GPU Mali-400 MP r1p1
 Mali: 
 2+0 PP cores initialized
 Mali: 
-Mali device driver loaded`
+Mali device driver loaded
+```
 
-`Thread 1 "test-mali" received signal SIGSEGV, Segmentation fault.
+```
+Thread 1 "test-mali" received signal SIGSEGV, Segmentation fault.
 0xb69ca090 in _mali_osu_lock_wait () from /usr/lib/libMali.so
 (gdb) bt
 #0  0xb69ca090 in _mali_osu_lock_wait () from /usr/lib/libMali.so
@@ -42,7 +43,8 @@ Mali device driver loaded`
 #3  0xb69bda9c in __egl_platform_init_display_fbdev () from /usr/lib/libMali.so
 #4  0xb6f24098 in _egl_initialize () from /usr/lib/libEGL.so
 #5  0xb6f24962 in eglInitialize () from /usr/lib/libEGL.so
-#6  0x00010ce4 in main (argc=<optimized out>, argv=<optimized out>) at /usr/src/debug/test-mali/git-r0/git/test/test.c:156`
+#6  0x00010ce4 in main (argc=<optimized out>, argv=<optimized out>) at /usr/src/debug/test-mali/git-r0/git/test/test.c:156
+```
 
 ## Build the images
 Clone the external submodules :
