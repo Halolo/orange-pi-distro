@@ -2,10 +2,10 @@ require linux-opi.inc
 
 COMPATIBLE_MACHINE = "orange-pi-pc|orange-pi-pc-plus"
 
-SRCREV = "515930d8ac6075800531d2fc88084fd8ecbb6592"
+SRCREV = "29dcea88779c856c7dc92040a0c01233263101d4"
 
 SRC_URI = " \
-  git://github.com/megous/linux.git;protocol=git;branch=orange-pi-4.16 \
+  git://github.com/torvalds/linux.git;protocol=git;branch=master \
   file://defconfig \
   file://Add-Mali-Node.patch \
 "
