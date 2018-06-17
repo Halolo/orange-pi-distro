@@ -4,7 +4,7 @@ SRC_URI += " \
     file://opi-wired.network \
 "
 
-PACKAGECONFIG_append = "networkd resolved"
+PACKAGECONFIG_append = " networkd resolved"
 
 do_install_append() {
   install -d ${D}${sysconfdir}/systemd/network
