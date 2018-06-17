@@ -13,7 +13,7 @@ QT5_PKGS = " \
   qtmultimedia \
   qt3d \
   qt5-opengles2-test \
-  eglinfo-fb \
+  eglinfo-x11 \
   cinematicexperience \ 
 "
 
@@ -21,3 +21,5 @@ IMAGE_INSTALL += " \
   ${EXTRA} \
   ${QT5_PKGS} \
 "
+
+IMAGE_FEATURES += "x11"

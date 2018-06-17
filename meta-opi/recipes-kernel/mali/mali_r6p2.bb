@@ -8,7 +8,7 @@ COMPATIBLE_MACHINE = "orange-pi-pc"
 
 PV = "r6p2+git${SRCPV}"
 
-SRCREV = "22858d78ee5d647c773330ed01187ca082818665"
+SRCREV = "d13f9cd1af126c07fc77f32838b9a8806ff8c83c"
 
 SRC_URI = "git://github.com/mripard/sunxi-mali.git;protocol=git"
 
