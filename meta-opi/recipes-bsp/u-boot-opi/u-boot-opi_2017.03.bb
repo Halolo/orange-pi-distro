@@ -24,6 +24,7 @@ SRC_URI = " \
   file://boot.cmd \
   file://0001-sunxi-add-A20-OLinuXino-Lime2-eMMC-defconfig.patch \
   file://Add_Spi_Nor_Flash_Boot_Support.patch \
+  file://0001-sunxi-h3-Fix-PLL1-setup-to-never-use-dividers.patch \
 "
 
 SRCREV = "8537ddd769f460d7fb7a62a3dcc9669049702e51"
