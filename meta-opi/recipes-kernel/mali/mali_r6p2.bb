@@ -4,7 +4,7 @@ LIC_FILES_CHKSUM = "file://${S}/linux/license/gpl/mali_kernel_license.h;md5=1436
 
 inherit module
 
-COMPATIBLE_MACHINE = "orange-pi-pc|orange-pi-pc-plus"
+COMPATIBLE_MACHINE = "orange-pi-pc"
 
 PV = "r6p2+git${SRCPV}"
 

@@ -1,5 +1,7 @@
 require linux-opi.inc
 
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}/${PN}z:"
+
 COMPATIBLE_MACHINE = "(orange-pi-zero)"
 
 SRCREV = "383584ac020b8c34f88f31aa66062628c80fd46d"
