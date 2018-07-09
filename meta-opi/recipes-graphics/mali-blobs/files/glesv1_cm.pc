@@ -6,7 +6,7 @@ includedir=/usr/include
 Name: gles_cm
 Description: Mali OpenGL ES 1.1 CM library
 Requires.private:
-Version: r6p2
+Version: r8p1
 Libs: -L${libdir} -lGLESv1_CM
 Libs.private: -lm -lpthread -ldl
 Cflags: -I${includedir}

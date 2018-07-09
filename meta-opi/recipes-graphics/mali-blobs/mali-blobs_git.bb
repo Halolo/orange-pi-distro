@@ -11,15 +11,15 @@ SRC_URI = " \
   file://glesv2.pc \
 "
 
-PV = "r6p2+git${SRCPV}"
+PV = "r8p1+git${SRCPV}"
 
-SRCREV = "cb3e8ece9b2c3a70cbeb3204cd6f30eceaa32023"
+SRCREV = "fcae78c031e5ffbf57f2d4c7ca0459431ce701b7"
 
 S= "${WORKDIR}/git"
 
 do_install() {
   install -d ${D}${libdir}
-  install -m 0644 ${S}/r6p2/x11_dma_buf/lib_x11_dma_buf/lib* ${D}${libdir}
+  install -m 0644 ${S}/r8p1/arm/fbdev/lib* ${D}${libdir}
 
   install -d ${D}${libdir}/pkgconfig
   install -m 0644 ${WORKDIR}/*.pc ${D}${libdir}/pkgconfig/
@@ -29,10 +29,10 @@ do_install() {
   install -d ${D}${includedir}/GLES2
   install -d ${D}${includedir}/KHR
 
-  install -m 0644 ${S}/r6p2/fbdev/include/EGL/* ${D}${includedir}/EGL/
-  install -m 0644 ${S}/r6p2/fbdev/include/GLES/* ${D}${includedir}/GLES/
-  install -m 0644 ${S}/r6p2/fbdev/include/GLES2/* ${D}${includedir}/GLES2/
-  install -m 0644 ${S}/r6p2/fbdev/include/KHR/* ${D}${includedir}/KHR/
+  install -m 0644 ${S}/r6p2/arm/fbdev/include/EGL/* ${D}${includedir}/EGL/
+  install -m 0644 ${S}/r6p2/arm/fbdev/include/GLES/* ${D}${includedir}/GLES/
+  install -m 0644 ${S}/r6p2/arm/fbdev/include/GLES2/* ${D}${includedir}/GLES2/
+  install -m 0644 ${S}/r6p2/arm/fbdev/include/KHR/* ${D}${includedir}/KHR/
 }
 
 FILES_${PN} = "${libdir}/*"
