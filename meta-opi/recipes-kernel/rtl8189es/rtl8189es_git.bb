@@ -7,9 +7,9 @@ inherit module
 PV = "git${SRCPV}"
 
 SRC_URI = "git://github.com/jwrdegoede/rtl8189ES_linux.git;branch=rtl8189fs \
-	file://0001-Add-module-install.patch \   
+	file://0001-Add-module-install.patch \
 	"
-SRCREV = "e0e80a9805472df943ad159b12633881aa69374a"
+SRCREV = "cddb07311ec03157643c44154498c9f2268fc431"
 S = "${WORKDIR}/git"
 
 EXTRA_OEMAKE += " \
