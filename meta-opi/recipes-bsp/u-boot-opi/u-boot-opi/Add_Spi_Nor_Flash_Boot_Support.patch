@@ -1,11 +1,12 @@
 diff --git a/configs/orangepi_zero_defconfig b/configs/orangepi_zero_defconfig
-index ac44937b16..7084b6c3e2 100644
+index 6afd4a3bfa..66904822ed 100644
 --- a/configs/orangepi_zero_defconfig
 +++ b/configs/orangepi_zero_defconfig
-@@ -15,3 +15,6 @@ CONFIG_SPL=y
- CONFIG_SPL_SPI_SUNXI=y
+@@ -14,3 +14,6 @@ CONFIG_CONSOLE_MUX=y
  CONFIG_SUN8I_EMAC=y
  CONFIG_USB_EHCI_HCD=y
+ CONFIG_SYS_USB_EVENT_POLL_VIA_INT_QUEUE=y
 +CONFIG_SPL_SPI_FLASH_SUPPORT=y
 +CONFIG_SPI_BOOT=y
 +CONFIG_SPL_SPI_SUNXI=y
+
