@@ -2,7 +2,7 @@ DESCRIPTION="Upstream's U-boot configured for sunxi devices"
 
 require recipes-bsp/u-boot/u-boot.inc
 
-DEPENDS += "dtc-native"
+DEPENDS += "dtc-native bison-native"
 
 LICENSE = "GPLv2"
 
