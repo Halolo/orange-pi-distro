@@ -54,11 +54,11 @@ BOOTSCR_FILE="$IMG_PATH/boot.scr"
 UIMAGE_FILE="$IMG_PATH/uImage"
 
 if [ "$MACHINE" = "orange-pi-zero" ]; then
-  DTB_FILE="$IMG_PATH/uImage-sun8i-h2-plus-orangepi-zero.dtb"
+  DTB_FILE="$IMG_PATH/sun8i-h2-plus-orangepi-zero.dtb"
 elif [ "$MACHINE" = "orange-pi-pc" ]; then
-  DTB_FILE="$IMG_PATH/uImage-sun8i-h3-orangepi-pc.dtb"
+  DTB_FILE="$IMG_PATH/sun8i-h3-orangepi-pc.dtb"
 elif [ "$MACHINE" = "orange-pi-pc-plus" ]; then
-  DTB_FILE="$IMG_PATH/uImage-sun8i-h3-orangepi-pc-plus.dtb"
+  DTB_FILE="$IMG_PATH/sun8i-h3-orangepi-pc-plus.dtb"
 fi
 
 RFS_FILE="$IMG_PATH/$IMAGE-$MACHINE.tar.gz"
