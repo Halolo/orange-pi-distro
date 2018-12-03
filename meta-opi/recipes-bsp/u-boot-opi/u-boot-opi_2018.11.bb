@@ -2,7 +2,7 @@ DESCRIPTION="Upstream's U-boot configured for sunxi devices"
 
 require recipes-bsp/u-boot/u-boot.inc
 
-DEPENDS += "dtc-native"
+DEPENDS += "dtc-native bison-native"
 
 LICENSE = "GPLv2"
 
@@ -22,14 +22,14 @@ file://Licenses/x11.txt;md5=b46f176c847b8742db02126fb8af92e2 \
 SRC_URI = " \
   git://git.denx.de/u-boot.git;branch=master \
   file://boot.cmd \
-  file://0001-sunxi-add-A20-OLinuXino-Lime2-eMMC-defconfig.patch \
   file://Add_Spi_Nor_Flash_Boot_Support.patch \
+  file://Increase_Kernel_Image_Max_Size.patch \
   file://0001-sunxi-h3-Fix-PLL1-setup-to-never-use-dividers.patch \
 "
 
-SRCREV = "8537ddd769f460d7fb7a62a3dcc9669049702e51"
+SRCREV = "0157013f4a4945bbdb70bb4d98d680e0845fd784"
 
-PV = "v2017.03+git${SRCPV}"
+PV = "v2018.11"
 
 S = "${WORKDIR}/git"
 

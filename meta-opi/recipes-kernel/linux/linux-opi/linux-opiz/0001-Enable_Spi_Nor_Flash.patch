@@ -1,8 +1,8 @@
 diff --git a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-index ad0829e8f716..919eae1e6dfd 100644
+index 84cd9c061227..32fe0513d9b2 100644
 --- a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
 +++ b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-@@ -178,8 +178,7 @@
+@@ -164,8 +164,7 @@
  };
  
  &spi0 {

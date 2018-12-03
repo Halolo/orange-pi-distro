@@ -1,8 +1,8 @@
 diff --git a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-index 6713d0f2b3f4..ad0829e8f716 100644
+index 84cd9c061227..435ae87a7aca 100644
 --- a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
 +++ b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-@@ -80,19 +80,22 @@
+@@ -80,13 +80,14 @@
  		};
  	};
  
@@ -21,6 +21,11 @@ index 6713d0f2b3f4..ad0829e8f716 100644
 +		enable-active-high;
  	};
  
+ 	reg_vdd_cpux: vdd-cpux-regulator {
+@@ -106,10 +107,12 @@
+ 			  1300000 1>;
+ 	};
+ 
 -	wifi_pwrseq: wifi_pwrseq {
 +	pwrseq_wifi: pwrseq_wifi@0 {
  		compatible = "mmc-pwrseq-simple";
@@ -32,21 +37,19 @@ index 6713d0f2b3f4..ad0829e8f716 100644
  	};
  };
  
-@@ -124,9 +127,11 @@
+@@ -140,8 +143,9 @@
+ };
+ 
  &mmc1 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&mmc1_pins_a>;
 -	vmmc-supply = <&reg_vcc_wifi>;
 -	mmc-pwrseq = <&wifi_pwrseq>;
 +	vmmc-supply = <&reg_vcc3v3>;
 +	vqmmc-supply = <&vdd_wifi>;
 +	mmc-pwrseq = <&pwrseq_wifi>;
  	bus-width = <4>;
-+	max-frequency = <16000000>;
  	non-removable;
  	status = "okay";
- 
-@@ -136,9 +141,30 @@
+@@ -152,9 +156,30 @@
  	 */
  	xr819: sdio_wifi@1 {
  		reg = <1>;
@@ -74,6 +77,6 @@ index 6713d0f2b3f4..ad0829e8f716 100644
 +    };
 +};
 +
- &mmc1_pins_a {
- 	bias-pull-up;
+ &ohci0 {
+ 	status = "okay";
  };

@@ -1,0 +1,13 @@
+diff --git a/include/configs/sunxi-common.h b/include/configs/sunxi-common.h
+index 9819d9980c..1aa2b0fbd6 100644
+--- a/include/configs/sunxi-common.h
++++ b/include/configs/sunxi-common.h
+@@ -36,6 +36,8 @@
+ #define CONFIG_SYS_BOOTM_LEN		(32 << 20)
+ #endif
+ 
++#define CONFIG_SYS_BOOTM_LEN		(64 << 20)
++
+ /* Serial & console */
+ #define CONFIG_SYS_NS16550_SERIAL
+ /* ns16550 reg in the low bits of cpu reg */

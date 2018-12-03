@@ -10,7 +10,7 @@ COMPATIBLE_MACHINE = "orange-pi-zero"
 
 PV = "git${SRCPV}"
 
-SRCREV = "2e864668093f6432b72f5da86b3d45b15a91230b"
+SRCREV = "d649e5a78efdc56ecd0951e35ca60db175650232"
 
 SRC_URI = "git://github.com/fifteenhex/xradio.git;protocol=https \
            file://Add_Targets_To_Makefile.patch \

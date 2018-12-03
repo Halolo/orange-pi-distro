@@ -2,19 +2,20 @@
 Build images using yocto for:
 - [Orange Pi Zero](http://www.orangepi.org/orangepizero/) SBC
 - [Orange Pi Pc](http://www.orangepi.org/orangepipc/) SBC
+- [Orange Pi Pc Plus](http://www.orangepi.org/orangepipcplus/) SBC
 
 ## Orange Pi Zero
 This will build a minimal console image
 
-Runs the 4.13-rc6 mainline kernel
+Runs the 4.19 mainline kernel
 
-[That work](https://github.com/fifteenhex/xradio) on XRADIO X819 WiFi driver for mainline kernel is also in the image as a kernel module and loaded at boot time (firmware binaries for this driver come from [here](https://github.com/armbian/build.git))
+[This XRADIO X819 WiFi driver](https://github.com/fifteenhex/xradio) for mainline kernel is also in the image as a kernel module and loaded at boot time (firmware binaries for this driver come from [here](https://github.com/armbian/build.git))
 
 The SPI NOR flash memory support is enbled in the kernel and bootloader configuration, so it could be used to run u-boot and boot from USB for example
 
 ## Orange Pi Pc [Plus]
 
-Runs a [4.16 kernel](https://github.com/megous/linux), with HDMI support and [Mali driver](https://github.com/mripard/sunxi-mali)
+Runs a [4.17 kernel](https://github.com/megous/linux), with HDMI support and [Mali driver](https://github.com/mripard/sunxi-mali)
 
 It's the r6p2 fb driver and the matching [r6p2 fb user space lib](https://github.com/free-electrons/mali-blobs), to be used with QT using the EGLFS platform (eglfs_mali)
 
@@ -55,13 +56,13 @@ Source the file `source-me`:
 
 `. source-me <machine>`
 
-With <machine> = "orange-pi-zero" or "orange-pi-pc"
+With <machine> = "orange-pi-zero", "orange-pi-pc" or "orange-pi-pc-plus"
 
 And build the image:
 
 `bitbake <image>`
 
-With <image> = "opiz-minimal" or "opipc-minimal"
+With <image> = "opiz-minimal", "opipc-minimal", "opipcplus-minimal" or "opipc-qt5"
 
 ## Flash on a sdcard
 The rootfs archive, bootloader and kernel images as well as an sdcard image with all needed partitions must have been created in:
