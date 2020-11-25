@@ -1,4 +1,7 @@
 # orange-pi-distro
+
+> :warning: **DEPRECATED**: Most of the drivers for Allwiner SoCs have been [merged in the mainline kernel](https://linux-sunxi.org/Linux_mainlining_effort), and the [meta-sunxi](https://github.com/linux-sunxi/meta-sunxi) yocto layer seems to have recipes to build it, and machine config for most of the SBCs, at least those mentionned in this repo, that's probably where you should look now.
+
 Build images using yocto for:
 - [Orange Pi Zero](http://www.orangepi.org/orangepizero/) SBC
 - [Orange Pi Pc](http://www.orangepi.org/orangepipc/) SBC
